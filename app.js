@@ -1,4 +1,4 @@
-console.log("Working")
+// console.log("Working")
 
 // PSEUDOCODE STARTS HERE MY FRIEND 
 // STEPS: 
@@ -35,6 +35,7 @@ const playerShip = {
    accuracy: .70
 }
 
+
 // Creating a function for player attacks
 playerAttack = (alien) => {
     // Checking for the accuracy of the attack
@@ -55,9 +56,24 @@ playerAttack = (alien) => {
     }
 }
 
+
 // Testing the playerAttack function
 playerAttack(alien4);
 // playerAttack();
 // playerAttack();
 // playerAttack();
+
+
+// Creating a function to ask the player if they really want to retreat/end the game and sending alerts based on their input
+playerRetreat = (input) => {
+    console.log("Are you sure you want to retreat Captain? This will end the battle...");
+    if (input === "yes" || input === "y" || input === "Yes") {
+        console.log("It has been an honor fighting with you. We'll get 'em next time.");
+    } else {
+        console.log("Let's keep going!")
+    }
+}
+
+// Testing the playerRetreat function
+playerRetreat("no")
 
