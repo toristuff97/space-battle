@@ -58,7 +58,7 @@ playerAttack = (alien) => {
 
 
 // Testing the playerAttack function
-playerAttack(alien4);
+// playerAttack(alien4);
 // playerAttack();
 // playerAttack();
 // playerAttack();
@@ -75,5 +75,21 @@ playerRetreat = (input) => {
 }
 
 // Testing the playerRetreat function
-playerRetreat("no")
+// playerRetreat("no")
+
+
+// Adding a function for the player's choice; if they choose to attack, the playerAttack function runs; if they choose to retreat, the playerRetreat function runs
+playerChoice = (input) => {
+    console.log("Attack or retreat this time, Captain?");
+    if (input === "attack" || input === "Attack" || input === "a" || input === "A") {
+        playerAttack(alien1)
+    } else if (input === "retreat" || input === "Retreat" || input === "r" || input === "R") {
+        playerRetreat("yes")
+    } else {
+        console.log("I didn't quite get that. Did you say 'attack' or 'retreat'?")
+    }
+}
+
+// Testing the playerChoice function
+playerChoice("retreat")
 
