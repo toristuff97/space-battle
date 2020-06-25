@@ -40,6 +40,20 @@ const playerShip = {
 
 // Creating a function for player attacks
 playerAttack = (alien) => {
+    // Cycling through the aliens; the statement is upside down because it makes more sense to me that way and I want to prevent weirdness
+    if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0 && alien5.hull <=0) {
+        alien = alien6
+    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0) {
+        alien = alien5
+    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0) {
+        alien = alien4
+    } else if (alien1.hull <=0 && alien2.hull <=0) {
+        alien = alien3
+    } else if (alien1.hull <=0) {
+        alien = alien2
+    }  else {
+        alien = alien1
+    }    
     // Checking for the accuracy of the attack
     attackValue = Math.random();
     // This statement tests the attackValue vs the alien ship's accuracy and shows alerts accordingly, as well as decreasing the alien's hull value, if needed.
@@ -85,7 +99,7 @@ playerRetreat = () => {
 playerChoice = () => {
     var input = prompt("Attack or retreat this time, Captain?");
     if (input === "attack" || input === "Attack" || input === "a" || input === "A") {
-        playerAttack(alien1)
+        playerAttack()
     } else if (input === "retreat" || input === "Retreat" || input === "r" || input === "R") {
         playerRetreat()
     } else {
@@ -96,7 +110,7 @@ playerChoice = () => {
 // Testing the playerChoice function
 // playerChoice("retreat")
 
-
+// Adding an intro to the game
 startGame = () => {
     confirm("Welcome to the Space Battle!");
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
