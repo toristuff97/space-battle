@@ -20,6 +20,8 @@ class Alien {
     }
 }
 
+
+
 // Using the constructor above to create 6 alien ships w/ increasingly higher stats
 let alien1 = new Alien("alien1", 3.4, 2.1, .65);
 let alien2 = new Alien("alien2", 3.8, 2.3, .68);
@@ -31,12 +33,16 @@ let totalAliens = (alien1.hull + alien2.hull + alien3.hull + alien4.hull + alien
 // console.log(totalAliens)
 
 
+
+
 // Creating player's ship Object
 const playerShip = {
    hull: 20.0,
    firepower: 5.0,
    accuracy: .70
 }
+
+
 
 
 // Creating a function for player attacks
@@ -83,6 +89,8 @@ playerAttack = (alien) => {
 // playerAttack();
 
 
+
+
 // Creating a function to ask the player if they really want to retreat/end the game and sending alerts based on their input
 playerRetreat = () => {
    let input = prompt("Are you sure you want to retreat Captain? This will end the battle...");
@@ -90,13 +98,18 @@ playerRetreat = () => {
         alert("It has been an honor fighting with you. We'll get 'em next time.");
     } else if (input === "no" || input === "n" || input === "No") {
         alert("Let's keep going!")
-        playerChoice()
+        playerChoice();
     }
+    // } else {
+    //     prompt("I didn't quite get that, did you want to retreat or not?")
+    // }
 }
 
 
 // Testing the playerRetreat function
 // playerRetreat("no")
+
+
 
 
 // Creating a function for if the player's hull value goes below 0
@@ -109,6 +122,8 @@ playerLose = () => {
         alert("It has been an honor fighting with you. Better luck next time.")
 }
 
+
+// Creating a function for if all of the alien ships are defeated
 playerWin= () => {
     alert("The USS Schwarznegger has emerged victorious! Great instincts Captain! That'll teach those Zixx to mess with us!")
     let restart = prompt("PLAY AGAIN?")
@@ -119,8 +134,10 @@ playerWin= () => {
 }
 
 
+
 // Adding a function for the player's choice; if they choose to attack, the playerAttack function runs; if they choose to retreat, the playerRetreat function runs
 playerChoice = () => {
+    if (totalAliens >0 && playerShip.hull > 0){
     var input = prompt("Attack or retreat this time, Captain?");
     if (input === "attack" || input === "Attack" || input === "a" || input === "A") {
         playerAttack()
@@ -129,7 +146,14 @@ playerChoice = () => {
     } else {
         console.log("I didn't quite get that. Did you say 'attack' or 'retreat'?")
     }
+} else if (totalAliens >0 && playerShip.hull <=0){
+    playerLose();
+} else {
+    playerWin();
 }
+}
+
+
 
 // Testing the playerChoice function
 // playerChoice("retreat")
@@ -140,14 +164,15 @@ startGame = () => {
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
     alert("Out of hyperspace, 6 hostile Zixx ships appear! It is up to you to guide your ship and crew through what'll surely be an intense battle! Each ship will attack one at a time until it is defeated. Your assistant will let you know how each ship's hull is faring after each attack. Let's go!")
     // playerChoice();
-    while (playerShip.hull >= 0) {
+    while (alien6.hull > 0) {
         playerChoice();
     }
-    if (totalAliens <= 0 && playerShip.hull >= 0) {
-        playerWin();
-    } else {
-        playerLose();
-    }
+    playerChoice();
+    // if (totalAliens <= 0 && playerShip.hull >= 0) {
+    //     playerWin();
+    // } else {
+    //     playerLose();
+    // }
     } 
     
 
