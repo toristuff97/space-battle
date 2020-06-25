@@ -7,6 +7,7 @@
 // 3. CREATE METHODS/FUNCTIONS FOR ATTACKING (TESTING IF THE RANDOM NUMBER IS HIGHER/LOWER THAN THE ALIEN SHIP'S ACCURACY) AND RETREATING (ENDING THE GAME) 
 // 4. CREATE AN IF THAT WILL TEST WHETHER THE CURRENT SHIP HAS BEEN DEFEATED, AND IF SO, SEND IN THE NEXT SHIP 
 // 5. TEST WHETHER EVERY SHIP HAS BEEN DEFEATED, AND IF SO, SEND A WINNING STATEMENT; IF THE PLAYER DOES NOT DEFEAT EVERY SHIP, SEND A LOSING STATEMENT
+// 6. CREATE A FUNCTION FOR THE ALIEN SHIPS ATTACKING
 
 
 
@@ -72,12 +73,14 @@ playerAttack = (alien) => {
         // This statement lets the player know if this particular ship has been defeated, and if not, how much HP(hull) is has remaining.
         if (alien.hull <= 0) {
             alert("You've defeated this alien's ship!");
+            console.log("Total aliens: ", totalAliens)
         } else {
             alert(`This ship has ${alien.hull} HP left!`);
         }
     } else {
         alert("Your attack missed!");
         alert(`This ship has ${alien.hull} HP left!`);
+        console.log("Total aliens:" , totalAliens)
     }
 }
 
