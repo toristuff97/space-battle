@@ -106,6 +106,14 @@ playerLose = () => {
         alert("It has been an honor fighting with you. Better luck next time.")
 }
 
+playerWin= () => {
+    alert("The USS Schwarznegger has emerged victorious! Great instincts Captain! That'll teach those Zixx to mess with us!")
+    let restart = prompt("PLAY AGAIN?")
+    if (restart === "yes" || restart === "y" || restart === "Yes") {
+        startGame()
+    } else if (restart === "no" || restart === "n" || restart === "No")
+        alert("It has been an honor fighting with you. I look forward to following you into our next battle.")
+}
 
 
 // Adding a function for the player's choice; if they choose to attack, the playerAttack function runs; if they choose to retreat, the playerRetreat function runs
