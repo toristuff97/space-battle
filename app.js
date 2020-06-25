@@ -43,7 +43,7 @@ const playerShip = {
    accuracy: .70
 }
 
-
+let turn = 1
 
 
 // Creating a function for player attacks
@@ -101,6 +101,7 @@ playerRetreat = () => {
         alert("It has been an honor fighting with you. We'll get 'em next time.");
     } else if (input === "no" || input === "n" || input === "No") {
         alert("Let's keep going!")
+        turn++
         playerChoice();
     }
     // } else {
@@ -112,6 +113,40 @@ playerRetreat = () => {
 // Testing the playerRetreat function
 // playerRetreat("no")
 
+
+// Adding the function for the alien ships attacking
+alienAttack = (alien) => {
+    console.log("Alien's turn!")
+     // Cycling through the aliens once again
+     if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0 && alien5.hull <=0) {
+        alien = alien6
+    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0) {
+        alien = alien5
+    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0) {
+        alien = alien4
+    } else if (alien1.hull <=0 && alien2.hull <=0) {
+        alien = alien3
+    } else if (alien1.hull <=0) {
+        alien = alien2
+    }  else {
+        alien = alien1
+    }    
+    let attackVal = Math.random();
+    if (attackVal > playerShip.accuracy) {
+        alert("The Zixx attack hit!");
+        playerShip.hull -= alien.firepower;
+        if (alien.hull <= 0) {
+            playerLose()
+        } else {
+            alert(`Your ship has ${playerShip.hull} HP left!`);
+        }
+        turn++
+    } else {
+        alert("The Zixx attack missed!");
+        alert(`Your ship has ${playerShip.hull} HP left!`);
+        turn++
+    }
+}
 
 
 
@@ -163,6 +198,7 @@ playerChoice = () => {
 
 // Adding an intro to the game
 startGame = () => {
+    turn = 1
     confirm("Welcome to the Space Battle!");
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
     alert("Out of hyperspace, 6 hostile Zixx ships appear! It is up to you to guide your ship and crew through what'll surely be an intense battle! Each ship will attack one at a time until it is defeated. Your assistant will let you know how each ship's hull is faring after each attack. Let's go!")
@@ -178,4 +214,6 @@ startGame = () => {
     // }
     } 
     
+
+
 
