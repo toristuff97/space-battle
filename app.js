@@ -12,7 +12,8 @@
 
 // Creating a constructor class to make the alien ship creation more efficient
 class Alien {
-    constructor(hull, firepower, accuracy) {
+    constructor(name, hull, firepower, accuracy) {
+        this.name = name;
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
@@ -20,12 +21,12 @@ class Alien {
 }
 
 // Using the constructor above to create 6 alien ships w/ increasingly higher stats
-let alien1 = new Alien(3.4, 2.1, .65);
-let alien2 = new Alien(3.8, 2.3, .68);
-let alien3 = new Alien(4.0, 2.5, .71);
-let alien4 = new Alien(4.5, 3.0, .74);
-let alien5 = new Alien(5.0, 3.5, .77);
-let alien6 = new Alien(6.0, 4.0, .80);
+let alien1 = new Alien("alien1", 3.4, 2.1, .65);
+let alien2 = new Alien("alien2", 3.8, 2.3, .68);
+let alien3 = new Alien("alien3", 4.0, 2.5, .71);
+let alien4 = new Alien("alien4", 4.5, 3.0, .74);
+let alien5 = new Alien("alien5", 5.0, 3.5, .77);
+let alien6 = new Alien("alien6", 6.0, 4.0, .80);
 let totalAliens = (alien1.hull + alien2.hull + alien3.hull + alien4.hull + alien5.hull + alien6.hull)
 // console.log(totalAliens)
 
@@ -54,6 +55,8 @@ playerAttack = (alien) => {
     }  else {
         alien = alien1
     }    
+   // Making sure the function is actually cycling through the aliens
+    console.log(`Now fighting ${alien.name}.`)
     // Checking for the accuracy of the attack
     attackValue = Math.random();
     // This statement tests the attackValue vs the alien ship's accuracy and shows alerts accordingly, as well as decreasing the alien's hull value, if needed.
@@ -136,6 +139,15 @@ startGame = () => {
     confirm("Welcome to the Space Battle!");
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
     alert("Out of hyperspace, 6 hostile Zixx ships appear! It is up to you to guide your ship and crew through what'll surely be an intense battle! Each ship will attack one at a time until it is defeated. Your assistant will let you know how each ship's hull is faring after each attack. Let's go!")
-    playerChoice();
+    // playerChoice();
+    while (playerShip.hull >= 0) {
+        playerChoice();
+    }
+    if (totalAliens <= 0 && playerShip.hull >= 0) {
+        playerWin();
+    } else {
+        playerLose();
+    }
+    } 
+    
 
-}
