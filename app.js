@@ -91,8 +91,21 @@ playerRetreat = () => {
     }
 }
 
+
 // Testing the playerRetreat function
 // playerRetreat("no")
+
+
+// Creating a function for if the player's hull value goes below 0
+playerLose = () => {
+    alert("The USS Schwarznegger has fallen victim to the Zixx. The ship explodes and bits of your crew are cast into the vast darkness of outer space...")
+    let restart = prompt("TRY AGAIN?")
+    if (restart === "yes" || restart === "y" || restart === "Yes") {
+        startGame()
+    } else if (restart === "no" || restart === "n" || restart === "No")
+        alert("It has been an honor fighting with you. Better luck next time.")
+}
+
 
 
 // Adding a function for the player's choice; if they choose to attack, the playerAttack function runs; if they choose to retreat, the playerRetreat function runs
