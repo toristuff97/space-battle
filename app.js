@@ -43,6 +43,7 @@ const playerShip = {
    accuracy: .70
 }
 
+// Adding a counter for whose turn it is
 let turn = 1
 
 
@@ -77,10 +78,12 @@ playerAttack = (alien) => {
         } else {
             alert(`This ship has ${alien.hull} HP left!`);
         }
+        turn++
     } else {
         alert("Your attack missed!");
         alert(`This ship has ${alien.hull} HP left!`);
         console.log("Total aliens:" , totalAliens)
+        turn++
     }
 }
 
@@ -101,7 +104,6 @@ playerRetreat = () => {
         alert("It has been an honor fighting with you. We'll get 'em next time.");
     } else if (input === "no" || input === "n" || input === "No") {
         alert("Let's keep going!")
-        turn++
         playerChoice();
     }
     // } else {
