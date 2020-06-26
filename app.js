@@ -204,9 +204,13 @@ startGame = () => {
     confirm("Welcome to the Space Battle!");
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
     alert("Out of hyperspace, 6 hostile Zixx ships appear! It is up to you to guide your ship and crew through what'll surely be an intense battle! Each ship will attack one at a time until it is defeated. Your assistant will let you know how each ship's hull is faring after each attack. Let's go!")
-    // playerChoice();
+    // Switching between turns based on the turn counter 
     while (alien6.hull > 0) {
-        playerChoice();
+        if (turn % 2 === 0) {
+            playerChoice
+        } else {
+            alienAttack
+        }    
     }
     playerChoice();
     // if (totalAliens <= 0 && playerShip.hull >= 0) {
@@ -218,4 +222,4 @@ startGame = () => {
     
 
 
-
+ 
