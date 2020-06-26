@@ -8,6 +8,7 @@
 // 4. CREATE AN IF THAT WILL TEST WHETHER THE CURRENT SHIP HAS BEEN DEFEATED, AND IF SO, SEND IN THE NEXT SHIP 
 // 5. TEST WHETHER EVERY SHIP HAS BEEN DEFEATED, AND IF SO, SEND A WINNING STATEMENT; IF THE PLAYER DOES NOT DEFEAT EVERY SHIP, SEND A LOSING STATEMENT
 // 6. CREATE A FUNCTION FOR THE ALIEN SHIPS ATTACKING
+// 7. END THE GAME
 
 
 
@@ -45,11 +46,20 @@ let alien3 = new Alien("alien3", makeHull(), makeFirepower(), makeAccuracy());
 let alien4 = new Alien("alien4", makeHull(), makeFirepower(), makeAccuracy());
 let alien5 = new Alien("alien5", makeHull(), makeFirepower(), makeAccuracy());
 let alien6 = new Alien("alien6", makeHull(), makeFirepower(), makeAccuracy());
-let totalAliens = (alien1.hull + alien2.hull + alien3.hull + alien4.hull + alien5.hull + alien6.hull)
-// console.log(totalAliens)
 
 
-console.log(alien1.hull , alien1.firepower, alien1.accuracy)
+// console.log(alien1.hull , alien1.firepower, alien1.accuracy)
+
+
+ // These are the values of the alien ships that can/will be modified, keeping original values intact for if the player wants to play again!
+ let modAlien1 = alien1;
+ let modAlien2 = alien2;
+ let modAlien3 = alien3;
+ let modAlien4 = alien4;
+ let modAlien5 = alien5;
+ let modAlien6 = alien6;
+ let totalAliens = (modAlien1.hull + modAlien2.hull + modAlien3.hull + modAlien4.hull + modAlien5.hull + modAlien6.hull)
+
 
 // Creating player's ship Object
 const playerShip = {
@@ -71,18 +81,18 @@ endGame = () => {
 // Creating a function for player attacks
 playerAttack = (alien) => {
     // Cycling through the aliens; the statement is upside down because it makes more sense to me that way and I want to prevent weirdness
-    if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0 && alien5.hull <=0) {
-        alien = alien6
-    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0) {
-        alien = alien5
-    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0) {
-        alien = alien4
-    } else if (alien1.hull <=0 && alien2.hull <=0) {
-        alien = alien3
-    } else if (alien1.hull <=0) {
-        alien = alien2
+    if (modAlien1.hull <=0 && modAlien2.hull <=0 && modAlien3.hull <=0 && modAlien4.hull <=0 && modAlien5.hull <=0) {
+        alien = modAlien6
+    } else if (modAlien1.hull <=0 && modAlien2.hull <=0 && modAlien3.hull <=0 && modAlien4.hull <=0) {
+        alien = modAlien5
+    } else if (modAlien1.hull <=0 && modAlien2.hull <=0 && modAlien3.hull <=0) {
+        alien = modAlien4
+    } else if (modAlien1.hull <=0 && modAlien2.hull <=0) {
+        alien = modAlien3
+    } else if (modAlien1.hull <=0) {
+        alien = modAlien2
     }  else {
-        alien = alien1
+        alien = modAlien1
     }    
    // Making sure the function is actually cycling through the aliens
     console.log(`Now fighting ${alien.name}.`)
@@ -95,7 +105,7 @@ playerAttack = (alien) => {
         // This statement lets the player know if this particular ship has been defeated, and if not, how much HP(hull) is has remaining.
         if (alien.hull <= 0) {
             alert("You've defeated this alien's ship!");
-            console.log("Total aliens: ", totalAliens)
+            // console.log("Total aliens: ", totalAliens)
         } else {
             alert(`This ship has ${alien.hull} HP left!`);
         }
@@ -103,7 +113,7 @@ playerAttack = (alien) => {
     } else {
         alert("Your attack missed!");
         alert(`This ship has ${alien.hull} HP left!`);
-        console.log("Total aliens:" , totalAliens)
+        // console.log("Total aliens:" , totalAliens)
         turn++
     }
 }
@@ -142,18 +152,18 @@ playerRetreat = () => {
 alienAttack = (alien) => {
     console.log("Alien's turn!")
      // Cycling through the aliens once again
-     if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0 && alien5.hull <=0) {
-        alien = alien6
-    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0 && alien4.hull <=0) {
-        alien = alien5
-    } else if (alien1.hull <=0 && alien2.hull <=0 && alien3.hull <=0) {
-        alien = alien4
-    } else if (alien1.hull <=0 && alien2.hull <=0) {
-        alien = alien3
-    } else if (alien1.hull <=0) {
-        alien = alien2
+     if (modAlien1.hull <=0 && modAlien2.hull <=0 && modAlien3.hull <=0 && modAlien4.hull <=0 && modAlien5.hull <=0) {
+        alien = modAlien6
+    } else if (modAlien1.hull <=0 && modAlien2.hull <=0 && modAlien3.hull <=0 && modAlien4.hull <=0) {
+        alien = modAlien5
+    } else if (modAlien1.hull <=0 && modAlien2.hull <=0 && modAlien3.hull <=0) {
+        alien = modAlien4
+    } else if (modAlien1.hull <=0 && modAlien2.hull <=0) {
+        alien = modAlien3
+    } else if (modAlien1.hull <=0) {
+        alien = modAlien2
     }  else {
-        alien = alien1
+        alien = modAlien1
     }    
     let attackVal = Math.random();
     if (attackVal > playerShip.accuracy) {
@@ -222,12 +232,19 @@ playerChoice = () => {
 
 // Adding an intro to the game
 startGame = () => {
+    modAlien1 = alien1;
+    modAlien2 = alien2;
+    modAlien3 = alien3;
+    modAlien4 = alien4;
+    modAlien5 = alien5;
+    modAlien6 = alien6;
+    totalAliens = (modAlien1.hull + modAlien2.hull + modAlien3.hull + modAlien4.hull + modAlien5.hull + modAlien6.hull)
     turn = 2
     confirm("Welcome to the Space Battle!");
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
     alert("Out of hyperspace, 6 hostile Zixx ships appear! It is up to you to guide your ship and crew through what'll surely be an intense battle! Each ship will attack one at a time until it is defeated. Your assistant will let you know how each ship's hull is faring after each attack. Let's go!")
     // Switching between turns based on the turn counter 
-    while (alien6.hull > 0) {
+    while (modAlien6.hull > 0) {
         if (turn % 2 === 0) {
             console.log("executing playerChoice")
             playerChoice();
