@@ -47,6 +47,12 @@ const playerShip = {
 let turn = 2
 
 
+// This function reloads the page (or it should)
+endGame = () => {
+    location.reload(forceGet);
+}
+
+
 // Creating a function for player attacks
 playerAttack = (alien) => {
     // Cycling through the aliens; the statement is upside down because it makes more sense to me that way and I want to prevent weirdness
@@ -102,6 +108,7 @@ playerRetreat = () => {
    let input = prompt("Are you sure you want to retreat Captain? This will end the battle...");
     if (input === "yes" || input === "y" || input === "Yes") {
         alert("It has been an honor fighting with you. We'll get 'em next time.");
+        endGame();
     } else if (input === "no" || input === "n" || input === "No") {
         alert("Let's keep going!")
         playerChoice();
@@ -226,4 +233,3 @@ startGame = () => {
     
 
 
- 
