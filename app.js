@@ -44,7 +44,7 @@ const playerShip = {
 }
 
 // Adding a counter for whose turn it is
-let turn = 1
+let turn = 2
 
 
 // Creating a function for player attacks
@@ -200,17 +200,21 @@ playerChoice = () => {
 
 // Adding an intro to the game
 startGame = () => {
-    turn = 1
+    turn = 2
     confirm("Welcome to the Space Battle!");
     alert("You are the Captain of the USS Schwarznegger. Your journey to the planet X35D75 has been peaceful...so far...")
     alert("Out of hyperspace, 6 hostile Zixx ships appear! It is up to you to guide your ship and crew through what'll surely be an intense battle! Each ship will attack one at a time until it is defeated. Your assistant will let you know how each ship's hull is faring after each attack. Let's go!")
     // Switching between turns based on the turn counter 
     while (alien6.hull > 0) {
         if (turn % 2 === 0) {
-            playerChoice
+            console.log("executing playerChoice")
+            playerChoice();
+        } else if (turn % 2 != 0){
+            console.log("executing alienAttack")
+            alienAttack();
         } else {
-            alienAttack
-        }    
+            console.log("This didn't work :(")
+        }   
     }
     playerChoice();
     // if (totalAliens <= 0 && playerShip.hull >= 0) {
