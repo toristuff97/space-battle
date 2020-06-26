@@ -18,23 +18,38 @@ class Alien {
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
+        
     }
 }
 
 
+// These functions return ranged random values for the alien ships hull, firepower, and accuracy
+makeHull = () => {
+    let newHull = Math.floor(Math.random()*4) + 3
+    return newHull;
+}
+makeFirepower = () => {
+    let newFirepower = Math.floor(Math.random()*3) + 2
+    return newFirepower;
+}
+makeAccuracy = () => {
+    let newAccuracy = (Math.floor(Math.random()*3)+6)/10
+    return newAccuracy;
+}
+
 
 // Using the constructor above to create 6 alien ships w/ increasingly higher stats
-let alien1 = new Alien("alien1", 3.4, 2.1, .65);
-let alien2 = new Alien("alien2", 3.8, 2.3, .68);
-let alien3 = new Alien("alien3", 4.0, 2.5, .71);
-let alien4 = new Alien("alien4", 4.5, 3.0, .74);
-let alien5 = new Alien("alien5", 5.0, 3.5, .77);
-let alien6 = new Alien("alien6", 6.0, 4.0, .80);
+let alien1 = new Alien("alien1", makeHull(), makeFirepower(), makeAccuracy());
+let alien2 = new Alien("alien2", makeHull(), makeFirepower(), makeAccuracy());
+let alien3 = new Alien("alien3", makeHull(), makeFirepower(), makeAccuracy());
+let alien4 = new Alien("alien4", makeHull(), makeFirepower(), makeAccuracy());
+let alien5 = new Alien("alien5", makeHull(), makeFirepower(), makeAccuracy());
+let alien6 = new Alien("alien6", makeHull(), makeFirepower(), makeAccuracy());
 let totalAliens = (alien1.hull + alien2.hull + alien3.hull + alien4.hull + alien5.hull + alien6.hull)
 // console.log(totalAliens)
 
 
-
+console.log(alien1.hull , alien1.firepower, alien1.accuracy)
 
 // Creating player's ship Object
 const playerShip = {
